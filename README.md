@@ -1,2 +1,2 @@
 final exam 
-Jemuel Estiller & Janine
+Jemuel Estiller & Janine Santillan
