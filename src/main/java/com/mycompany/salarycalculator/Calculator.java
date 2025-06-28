@@ -10,7 +10,7 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author lim
+ * @author lia
  */
 public class Calculator extends javax.swing.JFrame {
     
