@@ -10,7 +10,7 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author jemuel
+ * @author lim
  */
 public class Calculator extends javax.swing.JFrame {
     
@@ -24,7 +24,7 @@ public class Calculator extends javax.swing.JFrame {
     
     public Calculator() {
         initComponents();
-        jList1.setModel(listModel);
+        jListSalary.setModel(listModel);
     }
 
     /**
@@ -38,37 +38,45 @@ public class Calculator extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtHourlyRate = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtHoursWorked = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtTaxPercentage = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtLoan = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtRate = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtHours = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtTaxPercent = new javax.swing.JTextField();
+        lblDeduc = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblNet = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jListSalary = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        lbl1 = new javax.swing.JLabel();
+        btnCompute = new javax.swing.JButton();
+        lblSalary = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        lblDeduction = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        lblNetPay = new javax.swing.JLabel();
+        chkLoan = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Salary Calculator");
 
-        jPanel2.setBackground(new java.awt.Color(48, 46, 46));
+        btnAdd.setForeground(new java.awt.Color(204, 204, 255));
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Loan (if applicable)");
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Hourly Rate:");
@@ -79,87 +87,43 @@ public class Calculator extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tax Percentage");
 
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
+        lblDeduc.setForeground(new java.awt.Color(255, 255, 255));
+        lblDeduc.setText("00.00");
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Loan");
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("NetPay");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtHourlyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtHoursWorked, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTaxPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHourlyRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHoursWorked, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTaxPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdd)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lblNet.setForeground(new java.awt.Color(255, 255, 255));
+        lblNet.setText("00.00");
 
-        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
-
-        jList1.setBackground(new java.awt.Color(82, 33, 33));
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jListSalary.setForeground(new java.awt.Color(204, 204, 255));
+        jListSalary.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jListSalary);
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Total Salary");
 
-        jButton1.setText("Compute");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCompute.setForeground(new java.awt.Color(204, 204, 255));
+        btnCompute.setText("Compute");
+        btnCompute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnComputeActionPerformed(evt);
             }
         });
 
-        lbl1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl1.setText("00.00");
-        lbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblSalary.setForeground(new java.awt.Color(255, 255, 255));
+        lblSalary.setText("00.00");
+        lblSalary.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl1MouseClicked(evt);
+                lblSalaryMouseClicked(evt);
             }
         });
 
+        btnReset.setForeground(new java.awt.Color(204, 204, 255));
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,93 +134,106 @@ public class Calculator extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Deduction");
 
-        lblDeduction.setForeground(new java.awt.Color(255, 255, 255));
-        lblDeduction.setText("00.00");
-
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("NetPay");
-
-        lblNetPay.setForeground(new java.awt.Color(255, 255, 255));
-        lblNetPay.setText("00.00");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnReset)
-                                .addGap(20, 20, 20))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9))
-                                .addGap(47, 47, 47)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblDeduction)
-                                    .addComponent(lbl1)
-                                    .addComponent(lblNetPay))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnReset))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(lbl1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(lblDeduction))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(lblNetPay))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        chkLoan.setForeground(new java.awt.Color(255, 255, 255));
+        chkLoan.setText("Loan Payment");
+        chkLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLoanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtTaxPercent, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(chkLoan))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCompute)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnReset)
+                                .addGap(20, 20, 20))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel9))
+                                .addGap(47, 47, 47)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDeduc)
+                                    .addComponent(lblSalary)
+                                    .addComponent(lblNet))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(62, 62, 62))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(119, 119, 119)
                 .addComponent(jLabel1)
-                .addGap(98, 98, 98))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTaxPercent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkLoan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAdd))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCompute)
+                            .addComponent(btnReset))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(lblSalary))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(lblDeduc))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(lblNet))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,97 +252,98 @@ public class Calculator extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        String rate = txtHourlyRate.getText();
-        String hoursWork = txtHoursWorked.getText();
-        String tax = txtTaxPercentage.getText();
-        String loan = txtLoan.getText();
-      
-        
-        double r = Double.parseDouble(rate);
-        double h = Double.parseDouble(hoursWork);
-        double t = Double.parseDouble(tax);
-        double l = Double.parseDouble(loan);
-        
-        
-        
-        
-        double nt = t/100;
-        
-        if (rate.isEmpty() || hoursWork.isEmpty() || tax.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please enter Hourly Rate, Hours Worked and Tax");
+        String rateStr = txtRate.getText();
+        String hoursStr = txtHours.getText();
+        String taxPercentStr = txtTaxPercent.getText();
+        String loanStr = txtLoan.getText();
+
+        if (rateStr.isEmpty() || hoursStr.isEmpty() || taxPercentStr.isEmpty() || 
+        (chkLoan.isSelected() && loanStr.isEmpty())) {
+            JOptionPane.showMessageDialog(this, "Please fill in all the fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        try{
-            
-            
-            
-            listModel.addElement( "Hourly Rate: " + r);
-            listModel.addElement(  "Hours Worked: " +h );
-            listModel.addElement(  "Tax: " + nt);
-            listModel.addElement("Loan: "+ l);
-            
+
+        try {
+            double r = Double.parseDouble(rateStr);
+            double h = Double.parseDouble(hoursStr); 
+            double t = Double.parseDouble(taxPercentStr);
+            double l = 0; 
+
+            if (r < 0 || h < 0 || t < 0 || (chkLoan.isSelected() && l < 0)) {
+                JOptionPane.showMessageDialog(this, "Please ensure that all numeric values are positive.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (chkLoan.isSelected()) {
+                l = Double.parseDouble(loanStr);
+            }
+
+            listModel.addElement("Hourly Rate: " + r);
+            listModel.addElement("Hours Worked: " + h);
+            listModel.addElement("Tax: " + t);
+            listModel.addElement("Loan: " + (chkLoan.isSelected() ? l : "None"));
+
+            list.clear();
             list.add(r);
             list.add(h);
             list.add(t);
             list.add(l);
-            
-            txtHourlyRate.setText("");
-            txtHoursWorked.setText("");
-            txtTaxPercentage.setText(""); 
-            txtLoan.setText("");
-        }
-        catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Invalid Hourly Rate");
-            JOptionPane.showMessageDialog(this, "Invalid Hours Worked");
-            JOptionPane.showMessageDialog(this, "Invalid Tax Percentage");
+
+            txtRate.setText("");
+            txtHours.setText("");
+            txtTaxPercent.setText("");
+            txtLoan.setText(""); 
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid input. Please enter valid numbers.", "Input error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        // TODO add your handling code here:
-        double crt = list.get(0); 
-        double chw = list.get(1); 
-        double ctx = list.get(2); 
-        double ln = list.get(3);
-
-         Calculate c = new Calculate();
-         
-         double totalSalary =  c.getSalary(crt, chw);
-         double taxDeduction = c.getSalary(crt, chw, ctx);
-         double netPay = c.getSalary(crt, chw, ctx, ln);
-         
-         lbl1.setText(String.format("%.2f",totalSalary ));
-         lblDeduction.setText(String.format("%.2f", (taxDeduction + ln)));
-         lblNetPay.setText(String.format("%.2f", netPay));
-        
-
-
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void lbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbl1MouseClicked
-
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-      
-        if(!list.isEmpty()){
-           list.clear();
-           listModel.clear();
-                      
-            
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "List is empty");
-        }
-        lbl1.setText("00.00");
-        lblDeduction.setText("00.00");
-        lblNetPay.setText("00.00");
-        
+        list.clear();
+        listModel.clear();
+
+        lblSalary.setText("00.00");
+        lblDeduc.setText("00.00");
+        lblNet.setText("00.00");
+
+        txtRate.setText("");
+        txtHours.setText("");
+        txtTaxPercent.setText("");
+        txtLoan.setText("");
+
+        chkLoan.setSelected(false);
+
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void lblSalaryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalaryMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblSalaryMouseClicked
+
+    private void btnComputeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputeActionPerformed
+
+        // TODO add your handling code here:
+        double rate = list.get(0);  
+        double hrs = list.get(1);    
+        double taxPercent = list.get(2);
+        double loan = list.get(3); 
+
+        double totalSalary = rate * hrs;
+
+        double taxDeduction = totalSalary * (taxPercent / 100);
+
+        double netPay = totalSalary - taxDeduction - loan;
+
+        lblSalary.setText(String.format("%.2f", totalSalary));
+        lblDeduc.setText(String.format("%.2f", (taxDeduction + loan)));
+        lblNet.setText(String.format("%.2f", netPay));
+
+    }//GEN-LAST:event_btnComputeActionPerformed
+
+    private void chkLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLoanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkLoanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,8 +373,9 @@ public class Calculator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCompute;
     private javax.swing.JButton btnReset;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox chkLoan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -405,17 +384,15 @@ public class Calculator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jListSalary;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl1;
-    private javax.swing.JLabel lblDeduction;
-    private javax.swing.JLabel lblNetPay;
-    private javax.swing.JTextField txtHourlyRate;
-    private javax.swing.JTextField txtHoursWorked;
+    private javax.swing.JLabel lblDeduc;
+    private javax.swing.JLabel lblNet;
+    private javax.swing.JLabel lblSalary;
+    private javax.swing.JTextField txtHours;
     private javax.swing.JTextField txtLoan;
-    private javax.swing.JTextField txtTaxPercentage;
+    private javax.swing.JTextField txtRate;
+    private javax.swing.JTextField txtTaxPercent;
     // End of variables declaration//GEN-END:variables
 }
